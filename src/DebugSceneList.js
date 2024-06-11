@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import {View, StyleSheet, Text, TouchableHighlight, ScrollView} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {getTests, getTest, addUpdateListener, removeUpdateListener} from './TestRegistry';
 import type {RegisteredItemType} from './TestRegistry';
 import SearchableList from './SearchableList';
@@ -86,14 +85,6 @@ class DebugSceneList extends Component {
       });
     };
 
-    // TextInput calls this when text changed.
-    // We don't need to set the state here.
-    this.handleSearchChanged = search => {
-      if (this.props.saveSearch) {
-        AsyncStorage.setItem(SAVED_SEARCH_KEY, search);
-      }
-    };
-
     this.handleTestsUpdated = list => {
       let selectedItem = this.state.selectedItem;
       const currentKey = this.state.selectedItemKey;
@@ -112,11 +103,6 @@ class DebugSceneList extends Component {
   }
 
   componentDidMount() {
-    // Load saved value
-    if (this.props.saveSearch) {
-      AsyncStorage.getItem(SAVED_SEARCH_KEY).then(search => this.setState({search: search || ''}));
-    }
-
     addUpdateListener(this.handleTestsUpdated);
   }
 
@@ -184,7 +170,6 @@ class DebugSceneList extends Component {
           search={this.state.search}
           onClose={this.props.onClose}
           onPressRow={this.onPressRow}
-          onSearchChanged={this.handleSearchChanged}
           items={this.state.all}
           saveSearch={this.props.saveSearch}
         />

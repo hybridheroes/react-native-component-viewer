@@ -18,11 +18,6 @@ npm i -S react-native-component-viewer
 
 - You may need to close and restart the React Native packager.
 
-# Dependencies
-
-This will require you to add `@react-native-async-storage/async-storage` to your project
-dependencies. Instructions are at https://react-native-async-storage.github.io/async-storage/docs/install/
-
 # Usage
 
 This library does not assume any specific navigation library is in use. As a result it can be configured for us with [react-navigation](https://github.com/react-community/react-navigation), [react-native-router-flux](https://github.com/aksonov/react-native-router-flux), and others.

@@ -27,8 +27,7 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*",
-    "@react-native-async-storage/async-storage": "*"
+    "react-native": "*"
   },
   "devDependencies": {
     "eslint-config-calvium": "^0.3.0"
